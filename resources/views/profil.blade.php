@@ -2,5 +2,6 @@
     <a href="/home1">Home</a>
     <a href="/kontak">Kontak</a>
     <a href="/profil">Profil</a>
-    <h1>Welcome to the Home Page</h1>
+    <h1>Nama saya Nabil</h1>
+    <h2>Alamat saya di Jl. Sepakat</h2>
 </div>
