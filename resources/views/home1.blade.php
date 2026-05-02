@@ -1,4 +1,4 @@
-<div>
+<div class= "container">
     <a href="/home1">Home</a>
     <a href="/kontak">Kontak</a>
     <a href="/profil">Profil</a>
