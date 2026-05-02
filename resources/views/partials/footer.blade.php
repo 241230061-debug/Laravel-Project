@@ -15,7 +15,7 @@
             <p class="text-sm text-gray-400">Platform membantu orang</p>
         </div>
 
-       }
+       
         <div>
             <h2 class="text-lg font-bold mb-2">Kontak</h2>
             <p class="text-sm text-gray-400">241230061@unmuhpnk.ac.id</p>
