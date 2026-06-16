@@ -7,7 +7,10 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\DonasiController;
 use App\Http\Controllers\CampaignController;
+use App\Http\Controllers\DonationController;
 
+Route::get('/donation/create', [DonationController::class, 'create']);
+Route::post('/donation', [DonationController::class, 'store']);
 // Mengatur routing untuk setiap halaman
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home1', [Home1Controller::class, 'index']);

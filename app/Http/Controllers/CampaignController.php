@@ -21,9 +21,18 @@ class CampaignController extends Controller
     }
 
     // STORE (insert)
-    public function store(Request $request)
+   public function store(Request $request)
     {
-        Campaign::create($request->all());
+        $campaign = Campaign::create($request->all());
+        // 2. Simpan Relasi One-to-One (Rekening)
+        $campaign->account()->create([
+            'bank_name' => $request->bank_name,
+            'account_number' => $request->account_number,
+            'account_holder' => $request->account_holder,
+        ]);
+
+        $campaign->categories()->attach($request->categories);
+
         return redirect('/campaign')->with('success', 'Data berhasil ditambahkan');
     }
 

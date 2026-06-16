@@ -11,6 +11,24 @@ class Campaign extends Model
         'description',
         'target_donation',
         'collected_donation',
-        'deadline',
+        'deadline'
     ];
+
+    // Relasi One-to-One
+    public function account()
+    {
+        return $this->hasOne(CampaignAccount::class);
+    }
+
+    // Relasi One-to-Many
+    public function donations()
+    {
+        return $this->hasMany(Donation::class);
+    }
+
+    // Relasi Many-to-Many (Pivot)
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'campaign_category');
+    }
 }
