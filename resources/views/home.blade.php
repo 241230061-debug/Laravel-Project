@@ -13,7 +13,7 @@
     </p>
 
     <div class="flex justify-center">
-        <a href="/donasi" class="inline-flex items-center bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-full shadow-lg transform transition hover:scale-105 duration-300">
+        <a href="/donation/create" class="inline-flex items-center bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-full shadow-lg transform transition hover:scale-105 duration-300">
             Donasi Sekarang
         </a>
     </div>
