@@ -15,27 +15,36 @@ class DocumentationFileController extends Controller
 
     public function store(Request $request)
     {
+        // 1. Validasi Input (Spasi pada mimes dipisahkan dengan koma tanpa spasi)
         $request->validate([
             'title' => 'required|string|max:100',
-            'attachment' => 'required|file|mimes:png, jpg,jpeg,pdf,doc,docx,xls,xlsx,ppt,pptx|max:5120',
+            'attachment' => 'required|file|mimes:png,jpg,jpeg,pdf,doc,docx,xls,xlsx,ppt,pptx|max:5120',
         ]);
 
-        $file = $request->file('attachment');
-        $extension = $file->getClientOriginalExtension();
-        $folder = in_array($extension, ['png', 'jpg', 'jpeg']) ? 'images' : 'documents';
-        $path = $file->store($folder, 'public');
+        if ($request->hasFile('attachment')) {
+            $file = $request->file('attachment');
+            $extension = strtolower($file->getClientOriginalExtension());
 
-        $file = $request->file('attachment');
-        $extension = $file->getClientOriginalExtension();
-        $folder = in_array($extension, ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx']) ? 'documents' : 'images';
-        $path = $file->store($folder, 'public');
+            // 2. Tentukan folder berdasarkan ekstensi file (Cukup satu kali proses)
+            if (in_array($extension, ['png', 'jpg', 'jpeg'])) {
+                $folder = 'images';
+            } else {
+                $folder = 'documents';
+            }
 
-        DocumentationFile::create([
-            'title' => $request->title,
-            'file_path' => $path,
-            'file_type' => $extension,
-        ]);
-        
-        return redirect()->back()->with('success', 'File berhasil diunggah');
+            // 3. Simpan file fisik ke storage/app/public/{folder}
+            $path = $file->store($folder, 'public');
+
+            // 4. Simpan informasi file ke database
+            DocumentationFile::create([
+                'title' => $request->title,
+                'file_path' => $path,
+                'file_type' => $extension, // Pastikan kolom 'file_type' sudah ada di database & fillable di Model
+            ]);
+            
+            return redirect()->back()->with('success', 'File berhasil diunggah');
+        }
+
+        return redirect()->back()->with('error', 'Gagal mengunggah file.');
     }
 }
