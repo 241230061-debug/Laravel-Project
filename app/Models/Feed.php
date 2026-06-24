@@ -3,7 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use illuminate\Database\Eloquent\Factories\HasFactory;
+// Change 'illuminate' to 'Illuminate' below:
+use Illuminate\Database\Eloquent\Factories\HasFactory; 
 
 class Feed extends Model
 {
