@@ -9,6 +9,7 @@ use App\Http\Controllers\DonasiController;
 use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\DocumentationFileController;
+use App\Http\Controllers\FeedController;
 
 Route::get('/documentation', [DocumentationFileController::class, 'index']);
 Route::post('/documentation', [DocumentationFileController::class, 'store']);
@@ -22,3 +23,5 @@ Route::get('/profil', [ProfilController::class, 'index']);
 Route::get('/kontak', [KontakController::class, 'index']);
 Route::get('/donasi', [DonasiController::class, 'index']);
 Route::resource('campaign', CampaignController::class);
+
+Route::get('/feeds', [FeedController::class, 'index']);

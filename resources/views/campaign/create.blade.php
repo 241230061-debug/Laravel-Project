@@ -59,7 +59,7 @@
     </div>
 
     <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-3 rounded-lg w-full transition duration-200">
-        🚀 Publikasikan Kampanye Sosial
+         Publikasikan Kampanye Sosial
     </button>
 </form>
 
